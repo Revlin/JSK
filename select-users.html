@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Select User</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+    <link rel="stylesheet" href="lib/jquery/ui/themes/smoothness/jquery-ui.css" />
+	<link rel="stylesheet" href="styles/practice.css" />
+	
+    <script type="text/javascript" src="lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/jquery/mobile/jquery.mobile.min.js"></script>
+    <script type="text/javascript" src="lib/angular/angular.js"></script>
+</head>
+
+<body data-role="page" 
+	  data-ng-app="practice-angularjs">
+	<p>Based on an MVC tutorial from the <a href="http://techblog.appnexus.com/2014/angularjs-blog-series-mvc-in-angularjs/" target="_blank">AppNexus Tech Blog</a></p>
+	<div data-ng-controller="selectSubscribersController">
+		<select data-ng-model="model.selected"
+				data-ng-options="user.name for user in model.users">
+			<option value="">Select A User</option>
+		</select>
+		<h3>Subscribers</h3>
+		<ul>
+			<li data-ng-repeat="subscriber in subscribers = ( model.users | filter:{isSubscriber:true} )"
+				style="text-align:left; list-style:none; background-color:#CCF; border-bottom:2px solid #FFF;">
+				<a href="mailto:{{subscriber.email}}">{{subscriber.name}}</a>
+				<a href=""><span class="warning"
+					  data-ng-click="removeSubscriber(subscriber)"
+					  style="float:right; text-align:right">
+				REMOVE
+				</span></a>
+			</li>
+		</ul>
+	</div>
+
+	<br />
+	<span class="user-list" id="A.-Leonetti0">A. Leonetti a0@adventure-works.com</span><br />
+
+	<span class="user-list" id="A.-Wright1">A. Wright a1@adventure-works.com</span><br />
+
+	<span class="user-list" id="Aaron-Con2">Aaron Con aaron0@adventure-works.com</span><br />
+
+	<span class="user-list" id="Aaron-Con3">Aaron Con aaron1@adventure-works.com</span><br />
+
+	<span class="user-list" id="Aaron-Hughes4">Aaron Hughes aaron10@adventure-works.com</span><br />
+
+	<span class="user-list" id="Aaron-Flores5">Aaron Flores aaron11@adventure-works.com</span><br />
+
+	<span class="user-list" id="Aaron-Washington6">Aaron Washington aaron12@adventure-works.com</span><br />
+
+	<span class="user-list" id="Aaron-Butler7">Aaron Butler aaron13@adventure-works.com</span><br />
+
+	<span class="user-list" id="Aaron-Simmons8">Aaron Simmons aaron14@adventure-works.com</span><br />
+
+	<span class="user-list" id="Aaron-Foster9">Aaron Foster aaron15@adventure-works.com</span><br />
+
+	<span class="user-list" id="Aaron-Gonzales10">Aaron Gonzales aaron16@adventure-works.com</span><br />
+
+	<span class="user-list" id="Aaron-Bryant11">Aaron Bryant aaron17@adventure-works.com</span><br />
+
+	<span class="user-list" id="Aaron-Alexander12">Aaron Alexander aaron18@adventure-works.com</span><br />
+
+	<span class="user-list" id="Aaron-Russell13">Aaron Russell aaron19@adventure-works.com</span><br />
+
+	<span class="user-list" id="Aaron-Nicholls14">Aaron Nicholls aaron2@adventure-works.com</span><br />
+
+	<span class="user-list" id="Aaron-Griffin15">Aaron Griffin aaron20@adventure-works.com</span><br />
+
+	<span class="user-list" id="Aaron-Diaz16">Aaron Diaz aaron21@adventure-works.com</span><br />
+
+	<span class="user-list" id="Aaron-Hayes17">Aaron Hayes aaron22@adventure-works.com</span><br />
+
+	<span class="user-list" id="Aaron-Zhang18">Aaron Zhang aaron23@adventure-works.com</span><br />
+
+	<span class="user-list" id="Aaron-Wang19">Aaron Wang aaron24@adventure-works.com</span><br />
+
+    <script type="text/javascript" src="scripts/debugger.js"></script>
+    <script type="text/javascript" src="scripts/practice.js"></script>
+</body></html>

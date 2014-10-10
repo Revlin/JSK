@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Chrome Extension Downloader</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <script type="text/javascript" src="lib/angular/angular.min.js"></script>
+</head>
+
+<body data-role="page" data-ng-app>
+	<p>Go to Google Web Store and click on the extension thumbnail (image) and 
+		look for the extension-ID in the Chrome title-bar. The extension-ID is 
+		a set of 32 characters without space. You will find it at last after the 
+		extension name. Highlight and copy the extension-ID. </p>
+	extension-ID: <input type="text" data-ng-model="EXTENSIONID" />
+	<p>
+	1) After entering the extension-ID, <a href="https://clients2.google.com/service/update2/crx?response=redirect&x=id%3D{{EXTENSIONID}}%26uc">
+    	right-click and "Save Link As..."</a><br />
+	2) Right-click on downloaded .crx file and open it with 7z, WinRAR, WinZIP program.<br /> 
+	3) Extract the contents of the .crx file into a folder.<br />
+	4) Open a tab in Google Chrome and then type <a href="chrome://extensions" target="_blank">chrome://extensions</a> in address-bar and hit Enter.<br />
+	5) Check the Developer mode check-box if not checked and then click the "Load unpacked extension…" button.<br />
+	6) Navigate to the extenstion name folder and press the "OK" button. Your extension will be installed without any errors.
+	</p>
+</body></html>

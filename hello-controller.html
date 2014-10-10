@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Hello, AngularJS</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+    <link rel="stylesheet" href="lib/jquery/ui/themes/smoothness/jquery-ui.css" />
+	<link rel="stylesheet" href="styles/practice.css" />
+	
+    <script type="text/javascript" src="lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/jquery/mobile/jquery.mobile.min.js"></script>
+    <script type="text/javascript" src="lib/angular/angular.min.js"></script>
+</head>
+
+<body data-role="page" 
+	  data-ng-app="practice-angularjs" 
+	  data-ng-init="name = 'World'">
+	
+	<h1 data-ng-controller="HelloController">{{greet(name)}}</h1>
+
+    <script type="text/javascript" src="scripts/debugger.js"></script>
+    <script type="text/javascript" src="scripts/practice.js"></script>
+</body></html>
