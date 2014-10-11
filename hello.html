@@ -4,9 +4,21 @@
 <head>
     <title>Hello, World</title>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+	
+	<link rel="stylesheet" type="text/css" href="lib/sweetalert/lib/sweet-alert.css">
+	
     <script type="text/javascript" src="lib/angular/angular.min.js"></script>
+	<script src="lib/sweetalert/lib/sweet-alert.min.js"></script> 
 </head>
 
 <body data-role="page" data-ng-app data-ng-init="name = 'World'">
-	<h1>Hello, {{name}}!</h1>
+	<h1 id="hello">Hello, {{name}}!</h1> 
+	
+	<script type="text/javascript">
+		
+	window.onload = function(evt) {		
+		var say = swal || alert;
+		say( window.hello.innerHTML );
+	};
+	</script>
 </body></html>
