@@ -64,3 +64,102 @@ files: [
 WARN [web-server]: 404: [...]\JSK\node_modules\karma\static/karma.js
 ```
 
+I guess it's time to take a big step back. Maybe the quick and easy "recommended approach" to install Karma is just not going to work for me. How about approaching this the way a developer would, if she had was planning on [making changes](http://karma-runner.github.io/0.12/dev/making-changes.html) to the Karma source:
+```
+C:\...\lib> git clone https://github.com/karma-runner/karma.git
+C:\...\lib> cd karma
+C:\...\karma> git fetch origin --tags +refs/tags/*:refs/rtags/remote/*
+C:\...\karma> git checkout tags/v0.12.24
+C:\...\karma> git checkout -b release/v0.12.24
+```
+
+At this point I have a fresh pull of the same source code that was released as version 0.12.24 and I have created a new branch to work in, called 'release/v0.12.24'
+```
+C:\...\karma> node scripts/init-dev-env.js
+```
+
+From here alot of stuff (good stuff?) starts to print, ending with:
+```
+YAY, YOUR WORKSPACE IS READY!
+```
+
+Yeah, I think that's good. Time to run some tests, but this time I will be testing Karma itself via the included grunt files:
+```
+C:\...\karma> grunt test
+...
+...
+...
+INFO [launcher]: Trying to start Chrome again (2/2).
+WARN [web-server]: 404: C:\Users\revlin\Projects\JSK\lib\karma\static/karma.js
+WARN [launcher]: Chrome have not captured in 20000 ms, killing.
+ERROR [launcher]: Chrome failed 2 times (timeout). Giving up.
+[Error]
+Fatal error: Client unit tests failed.
+
+```
+
+Not quite back where I started, but maybe I'm getting closer to explicating the failing factor? Oddly dumping most of the ERROR message into the google search lead to another [useful comment](https://github.com/karma-runner/karma/issues/1028) on github:
+
+> DanTup commented on Apr 12
+>
+> _Yep; that PR fixes all failing 7 of the failing tests I posted :thumbsup:
+> However, the subsequent tests now fail (Chrome opens; but doesn't seem to 
+> connect/load the page). This probably happened before too, it just didn't 
+> get this far. It might be a local setup issue; not done much digging yet:_
+> ```
+> INFO [karma]: Karma v0.11.14 server started at http://localhost:9876/
+> INFO [launcher]: Starting browser Chrome
+> WARN [web-server]: 404: M:\Coding\TestApps\karma2\static/karma.js
+> WARN [launcher]: Chrome have not captured in 20000 ms, killing.
+> INFO [launcher]: Trying to start Chrome again (1/2).
+> WARN [web-server]: 404: M:\Coding\TestApps\karma2\static/karma.js
+> WARN [launcher]: Chrome have not captured in 20000 ms, killing.
+> INFO [launcher]: Trying to start Chrome again (2/2).
+> WARN [web-server]: 404: M:\Coding\TestApps\karma2\static/karma.js
+> WARN [launcher]: Chrome have not captured in 20000 ms, killing.
+> ERROR [launcher]: Chrome failed 2 times (timeout). Giving up.
+> ```
+>
+> deepak1556 commented on Apr 12
+>
+> _cool, once everything works fine we shld have tat PR updated and merged, Thanks!_
+>
+>
+> sylvain-hamel commented on Apr 12
+>
+> _the 404 might be because you have not built the project using grunt build_
+>
+>
+> DanTup commented on Apr 12
+>
+> _Oops, @sylvain-hamel is correct; I didn't build when I cloned the other repo!_
+>
+
+DanTup seems to have encountered the same error I am getting, so let me try sylvain-hamel's suggestion:
+```
+C:\...\karma> grunt build
+Running "browserify:client" (browserify) task
+
+Done, without errors.
+```
+
+Wow, that was short and sweet. And the client test?
+```
+C:\...\karma> grunt test:client
+INFO [karma]: Karma v0.12.24 server started at http://localhost:9876/
+INFO [launcher]: Starting browser Chrome
+INFO [Chrome 39.0.2138 (Windows 8)]: Connected on socket rjcQ459piu_P2KBjQo1E wi
+th id 92813343
+.........................
+Chrome 39.0.2138 (Windows 8): Executed 25 of 25 SUCCESS (0.024 secs / 0.018 secs
+)
+
+Done, without errors.
+
+```
+
+Booyah! 
+
+I now presume that this Karma build can be installed and will succeed in testing my project files...
+
+
