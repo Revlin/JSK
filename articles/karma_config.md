@@ -1,5 +1,7 @@
 If you'd like to get started with [Karma](http://karma-runner.github.io/), the multi-browser, "spectacular test runner for JavaScript", and you happen to be on Windows, get ready to rumble with karma.conf.js
 
+![Karma](http://karma-runner.github.io/assets/img/banner.png)
+
 Most of the documentation on Karma, including the official docs, ask you to use the CLI command ```karma init``` with an optional filename tacked on to the end. This command takes you through a series of questions that are supposed to auto-magically build the 'karma.conf.js' file (if you didn't include a filename). This magical file will supposedly instruct Karma on how to conduct it's business when you run ```karma start```. However, I have spent not so few hours searching, reading and implementing fixes for the troublesome conflicts in this little file. 
 
 Pretty much, no matter what changes I make, this is the console's response to running ```karma start [my.conf.js]``` on a Windows 8 workstation:
@@ -10,7 +12,7 @@ WARN [web-server]: 404: [...]\JSK\node_modules\karma\static/karma.js
 WARN [web-server]: 404: [...]\JSK\node_modules\karma\static/karma.js
 ```
 
-Googling "Karma WARN [web-server]: 404" yeilds very few useful results, even if one appends "+karma.js" (the missing file) onto that query. This [github issue](https://github.com/karma-runner/karma/issues/554) seemed helpful, though:
+Googling "Karma WARN \[web-server\]: 404" yeilds very few useful results, even if one appends "+karma.js" (the missing file) onto that query. This [github issue](https://github.com/karma-runner/karma/issues/554) seemed helpful, though:
 
 > bruno-c commented on May 22, 2013
 >
@@ -90,7 +92,7 @@ C:\...\karma> grunt test
 ...
 ...
 INFO [launcher]: Trying to start Chrome again (2/2).
-WARN [web-server]: 404: C:\Users\revlin\Projects\JSK\lib\karma\static/karma.js
+WARN [web-server]: 404: [...]\JSK\lib\karma\static/karma.js
 WARN [launcher]: Chrome have not captured in 20000 ms, killing.
 ERROR [launcher]: Chrome failed 2 times (timeout). Giving up.
 [Error]
@@ -198,7 +200,7 @@ Do you want Karma to watch all the files and run the tests on change ?
 Press tab to list possible options.
 > yes
 
-Config file generated at "C:\Users\revlin\Projects\JSK\karma.conf.js".
+Config file generated at "[...]\JSK\karma.conf.js".
 ```
 
 Notice that I've entered "js/\*.js" and "tests/\*.js" as patterns for finding my source and test code, respectively. The first directory contains a JavaScript file which defines my class/object. The second direcotry contains a JavaScript file which tests this same class/object following a Jasmine style spec. Now it's time to test:
