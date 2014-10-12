@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Sat Oct 11 2014 09:07:12 GMT-0700 (Pacific Daylight Time)
+// Generated on Sun Oct 12 2014 10:06:05 GMT-0700 (Pacific Daylight Time)
 
 module.exports = function(config) {
   config.set({
@@ -15,12 +15,14 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'js/*.js',
       'tests/*.js'
     ],
 
 
     // list of files to exclude
     exclude: [
+      'karma.conf.js'
     ],
 
 

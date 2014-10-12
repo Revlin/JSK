@@ -161,5 +161,54 @@ Done, without errors.
 Booyah! 
 
 I now presume that this Karma build can be installed and will succeed in testing my project files...
+```
+C:\...\karma> cd ..\..
+C:\...\JSK> npm install lib\karma
+C:\...\JSK> node node_modules\karma\bin\karma init
 
+Which testing framework do you want to use ?
+Press tab to list possible options. Enter to move to the next question.
+> jasmine
 
+Do you want to use Require.js ?
+This will add Require.js plugin.
+Press tab to list possible options. Enter to move to the next question.
+> no
+
+Do you want to capture any browsers automatically ?
+Press tab to list possible options. Enter empty string to move to the next quest
+ion.
+> Chrome
+>
+
+What is the location of your source and test files ?
+You can use glob patterns, eg. "js/*.js" or "test/**/*Spec.js".
+Enter empty string to move to the next question.
+> js/*.js
+> tests/*.js
+>
+
+Should any of the files included by the previous patterns be excluded ?
+You can use glob patterns, eg. "**/*.swp".
+Enter empty string to move to the next question.
+> karma.conf.js
+>
+
+Do you want Karma to watch all the files and run the tests on change ?
+Press tab to list possible options.
+> yes
+
+Config file generated at "C:\Users\revlin\Projects\JSK\karma.conf.js".
+```
+
+Notice that I've entered "js/\*.js" and "tests/\*.js" as patterns for finding my source and test code, respectively. The first directory contains a JavaScript file which defines my class/object. The second direcotry contains a JavaScript file which tests this same class/object following a Jasmine style spec. Now it's time to test:
+
+```
+C:\...\JSK> node node_modules\karma\bin\karma start
+INFO [karma]: Karma v0.12.24 server started at http://localhost:9876/
+INFO [launcher]: Starting browser Chrome
+INFO [Chrome 39.0.2138 (Windows 8)]: Connected on socket TfBE-RIFVkn6IxaqU_nw wi
+th id 76067694
+Chrome 39.0.2138 (Windows 8): Executed 2 of 2 SUCCESS (0.01 secs / 0.008 secs)
+```
+*That's* what I'm talking (writing) about!
