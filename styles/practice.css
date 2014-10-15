@@ -1,5 +1,5 @@
-* *.aspNetHidden, * *.ui-loader-default {
-	display: none;
+body {
+	background: #FFF;
 }
 
 body.ng-scope div.ng-scope {
@@ -21,4 +21,8 @@ body.ng-scope div.ng-scope {
 * *.warning {
 	color:			red;
 	font-weight: 	bold;
+}
+
+* *.aspNetHidden, * *.ui-loader-default {
+	display: none;
 }
