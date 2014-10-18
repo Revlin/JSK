@@ -6,7 +6,30 @@
 	<script type="text/ecmascript" xlink:href="scripts/practice.js"></script>
 	<script type="text/ecmascript">	
 	//<![CDATA[
+	/**
+	  creates a circle in the upper left corner of its container
+	  with the given radius. `<custom-circle radius="10"/>`
+	* (Adapted from https://gist.github.com/blesh/2a11d1b4d65006d6ade3#file-custom-circle-js)
+	*/
+	practice.directive('customCircle', function(){
+	  return {
+		restrict: 	'C',
 
+		// the following two configuration options are 
+		// required for SVG custom elements.
+		templateNamespace: 'svg',
+		replace: true, 
+
+		// NOTE: ng-attr- style binding is used to prevent SVG validation
+		// error messages.
+		template: '<circle ng-attr-cx="{{radius}}" ng-attr-cy="{{radius}}" ng-attr-r="{{radius}}"/>',
+
+		// everything else as normal
+		scope: {
+		  radius: '@',
+		}
+	  };
+	});
 	//]]>
 	</script>
 	<style type="text/css">
@@ -31,6 +54,8 @@
 	   data-ng-init="name = 'World'">
 		
 		<circle cx="480" cy="90" r="30" />
+		
+		<g class="custom-circle"></g>
 		
 		<text data-ng-controller="HelloController" 
 			  class="title"
