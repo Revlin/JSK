@@ -7,18 +7,21 @@
 	
 	<link rel="stylesheet" type="text/css" href="lib/sweetalert/lib/sweet-alert.css">
 	
-    <script type="text/javascript" src="lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="lib/angular/angular.js"></script>
 	<script src="lib/sweetalert/lib/sweet-alert.min.js"></script> 
 </head>
 
 <body data-role="page" data-ng-app data-ng-init="name = 'World'">
 	<h1 id="hello">Hello, {{name}}!</h1> 
+	<p id="version"></p>
 	
 	<script type="text/javascript">
 		
 	window.onload = function(evt) {		
 		var say = swal || alert;
 		say( window.hello.innerHTML );
+		
+		window.version.innerHTML =  angular.version.full;
 	};
 	</script>
 </body></html>
