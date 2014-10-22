@@ -13,7 +13,7 @@ function GeometricMean( stdlib, foreign, buffer ) {
 		
 		var sum = 0.0, p = 0, q = 0;
 		
-		for( p = start<<3, q = end<<3; (p|0) < (q|0); p = (p+8)|0 ) {
+		for( p = start<<3, q = end<<3; (p|0) < (q|0); p = ((p+8)|0) ) {
 			sum = sum + +log(values[p>>3]);
 		}
 		
@@ -27,7 +27,10 @@ function GeometricMean( stdlib, foreign, buffer ) {
 		return +exp(+logSum(start,end) / +((end - start)|0));
 	}
 	
-	return { geometricMean: geometricMean };
+	return { 
+		geometricMean: geometricMean,
+		logSum: logSum
+	};
 }
 
 1;

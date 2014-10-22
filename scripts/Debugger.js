@@ -60,8 +60,7 @@ Debugger.profile = {
 		return this.time1;
 	},
 	stop: function() {
-		this.time2 = (new Date).getTime();	
-		return ( this.time2 - this.time1 );
+		return ( this.check() - this.time1 );
 	},
 	check: function() {
 		this.time2 = (new Date).getTime();	
